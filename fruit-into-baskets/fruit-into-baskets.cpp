@@ -2,7 +2,7 @@ class Solution {
 public:
     int totalFruit(vector<int>& tr) {
         int sIdx=0,ans=0,ct=0,n=tr.size();
-        map<int,int>mp;
+        unordered_map<int,int>mp;
         for(int i=0;i<n;i++)
         {
             if(mp[tr[i]]==0)
