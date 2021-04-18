@@ -1,30 +1,21 @@
 class Solution {
 public:
     int minCost(string s, vector<int>& cost) {
-        int ans=0,tmpAns=0,len=0,mx=-1;
-        for(int i=0;i<s.size();i++)
+        int ans=0,tmpAns=cost[0],len=1,mx=cost[0];
+        for(int i=1;i<s.size();i++)
         {
-            if(i!=0&&s[i]!=s[i-1])
+            if(s[i]!=s[i-1])
             {
-                if(len==1)
-                {
-                    mx=-1;
-                    tmpAns=0;
-                    len=0;
-                }
-                else
-                {
-                    ans+=(tmpAns-mx);
+                   ans+=(tmpAns-mx);
                     tmpAns=0;
                     mx=-1;
                     len=0;
-                }
-            }
+             }
                mx=max(mx,cost[i]);
                 len++;
                 tmpAns+=cost[i];
             
-             cout<<ans;
+            // cout<<ans;
         }
        
         if(len!=1)
