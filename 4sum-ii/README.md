@@ -1,3 +1,4 @@
+[Discussion Post (created on 22/3/2021 at 10:25)](https://leetcode.com/problems/4sum-ii/discuss/?currentPage=1&orderBy=most_votes&query=)  
 <h2>454. 4Sum II</h2><h3>Medium</h3><hr><div><p>Given four integer arrays <code>nums1</code>, <code>nums2</code>, <code>nums3</code>, and <code>nums4</code> all of length <code>n</code>, return the number of tuples <code>(i, j, k, l)</code> such that:</p>
 
 <ul>
