@@ -1,3 +1,4 @@
+[Discussion Post (created on 27/3/2021 at 10:42)](https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/submissions/)  
 <h2>108. Convert Sorted Array to Binary Search Tree</h2><h3>Easy</h3><hr><div><p>Given an integer array <code>nums</code> where the elements are sorted in <strong>ascending order</strong>, convert <em>it to a <strong>height-balanced</strong> binary search tree</em>.</p>
 
 <p>A <strong>height-balanced</strong> binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.</p>
