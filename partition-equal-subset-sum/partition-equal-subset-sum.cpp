@@ -5,21 +5,20 @@ public:
         int n=nums.size();
         for(auto u:nums)
             total+=u;
-        bool dp[total/2+10][n+1];
-        for(int i=0;i<=n;i++)
-            dp[0][i]=true;
-        for(int i=1;i<=total/2;i++)
-            dp[i][0]=false;
         if(total%2)return false;
-        for(int i=1;i<=total/2;i++)
+                bool dp[total/2+1];memset(dp,false,sizeof(dp));dp[0]=true;
+        for(auto u:nums)
         {
-            for(int j=1;j<=n;j++)
+            for(int i=total/2;i>=u;i--)
             {
-                dp[i][j]=dp[i][j-1];
-                if(nums[j-1]<=i)
-                    dp[i][j]=dp[i][j]||dp[i-nums[j-1]][j-1];
+                if(dp[i-u])
+                {
+                    dp[i]=true;
+                }
+                if(dp[total/2])return true;
             }
         }
-        return dp[total/2][n];
+        return false;
+        
     }
 };
