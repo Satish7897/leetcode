@@ -1,3 +1,4 @@
+[Discussion Post (created on 9/4/2021 at 14:18)](https://leetcode.com/problems/search-a-2d-matrix/discuss/1199176/CPPorconcise)  
 <h2>74. Search a 2D Matrix</h2><h3>Medium</h3><hr><div><p>Write an efficient algorithm that searches for a value in an <code>m x n</code> matrix. This matrix has the following properties:</p>
 
 <ul>
