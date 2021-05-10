@@ -1,26 +1,31 @@
 class Solution {
 public:
     int minOperations(vector<int>& nums, int x) {
-        int n=nums.size(),ans=INT_MAX,sum=0,lsum=0;
-        vector<int>preSum;
-        for(auto u:nums)
-        {
-            sum+=u;
-            preSum.push_back(sum);
+        int n=nums.size();int ans=INT_MAX;int preSum=0;int lsum=0;int l=0;
+       
+        for(int u:nums)
+        {  
+          if(preSum<x)
+            preSum+=u;
+           if(preSum>=x) break;
+            l++;
         }
-        int l=lower_bound(preSum.begin(),preSum.end(),x)-preSum.begin();
+     
        
         if(l==n)return -1;
-        if(preSum[l]==x)ans=l+1;
+        if(preSum==x)ans=l+1;
         for(int i=n-1;i>=0;i--)
         { 
             lsum+=nums[i];
-         if(lsum>x)break;
+            if(lsum>x)break;
             int req=x-lsum;
-            while(l>=0&&l<i&&preSum[l]>req)
+            while(l>=0&&l<i&&preSum>req)
+            {
+                preSum-=nums[l];
                 l--;
+            }
             if(l==-1&&lsum==x)ans=min(ans,n-i);
-            else if(l!=-1&&preSum[l]+lsum==x)ans=min(ans,l+1+n-i);
+            else if(l!=-1&&preSum+lsum==x)ans=min(ans,l+1+n-i);
         }
         return ans==INT_MAX?-1:ans;
         
