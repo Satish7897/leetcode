@@ -15,16 +15,16 @@ public:
     int diameterOfBinaryTree(TreeNode* root) {
         ans=0;
         solve(root);
-        return ans-2;
+        return ans;
     }
     int solve(TreeNode *root)
     {
         if(root==NULL)
             return 0;
-        int lval=1+solve(root->left);
-        int rval=1+solve(root->right);
+        int lval=solve(root->left);
+        int rval=solve(root->right);
         ans=max(ans,lval+rval);
-        cout<<root->val<<" "<<lval<<" "<<rval<<"\n";
-        return max(lval,rval);
+       // cout<<root->val<<" "<<lval<<" "<<rval<<"\n";
+        return max(lval,rval)+1;
     }
 };
