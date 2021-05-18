@@ -1,43 +1,33 @@
+typedef pair<int, pair<int, int>> pi;
 class Solution {
 public:
     vector<int> smallestRange(vector<vector<int>>& nums) {
-        vector<pair<int,int>>vp;
-        int k=nums.size();
-        for(int i=0;i<nums.size();i++)
-        {
-            for(auto u:nums[i])
-                vp.push_back({u,i});
+        int n = nums.size();
+        priority_queue<pi, vector<pi>, greater<pi>> pq;
+        int mn = INT_MAX, mx = INT_MIN, range = INT_MAX;
+        for (int i=0; i<n; i++) {
+            pq.push({nums[i][0], {i, 0}});
+            mn = min(mn, nums[i][0]);
+            mx = max(mx, nums[i][0]);
         }
-        sort(vp.begin(),vp.end());
-        int l=0,r=0,ct=0,n=vp.size(),ans=INT_MAX;
-        vector<int>response(2);
-        unordered_map<int,int>mp;
-       
-        while(r<n)
-        {
-            while(ct<k&&r<n)
-            {
-                if(mp[vp[r].second]==0)ct++;
-                mp[vp[r].second]++;
-                r++;  
+        int a = mn, b = mx;
+        while (!pq.empty()) {
+            pi curr = pq.top();
+            pq.pop();
+            //cout<<curr.first<<" "<<curr.second.first<<" "<<curr.second.second<<endl;
+            if (curr.second.second + 1 < nums[curr.second.first].size()) {
+                int r = curr.second.first, c = curr.second.second + 1;
+                pq.push({nums[r][c], {r, c}});
+                mn = pq.top().first;
+                mx = max(mx, nums[r][c]);
+                if (b-a > mx-mn) {
+                    a = mn;
+                    b = mx;
+                }
+            } else {
+                break;
             }
-           
-            while(ct>=k&&l<n)
-            {
-              int x=abs(vp[l].first-vp[r-1].first);
-              if(x<ans)
-              {
-                  ans=x;
-                  response[0]=vp[l].first;
-                  response[1]=vp[r-1].first;
-              }
-             if(mp[vp[l].second]==1)
-                ct--;
-              mp[vp[l].second]--;
-            l++;
-            }
-         
         }
-        return response;
+        return {a, b};
     }
 };
